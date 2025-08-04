@@ -2,13 +2,12 @@ export async function initializePlayer(token, onReadyCallback) {
   await loadSpotifySDK();
 
   const player = new Spotify.Player({
-    name: 'Reproductor del Bienestar',
+    name: 'Shadowfy',
     getOAuthToken: cb => cb(token),
     volume: 0.5
   });
 
   player.addListener('ready', ({ device_id }) => {
-    console.log('Reproductor listo en:', device_id);
     onReadyCallback(device_id, player);
   });
 
