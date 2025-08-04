@@ -1,0 +1,18 @@
+# Environment variables
+.env
+
+# Node dependencies
+node_modules/
+
+# Optional lockfile
+package-lock.json
+
+# Optional: logs, system files, and editor settings
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.DS_Store
+*.log
+.idea/
+.vscode/
