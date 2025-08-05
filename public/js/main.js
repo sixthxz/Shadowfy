@@ -85,7 +85,7 @@ async function startApp(token) {
 
   const devices = await getAvailableDevices(token);
   const activeDevice = devices.find(d => d.is_active);
-  const localDevice = devices.find(d => d.name === 'Reproductor del Bienestar');
+  const localDevice = devices.find(d => d.name === 'Shadowfy');
 
   const deviceList = document.createElement('ul');
   deviceList.className = 'device-list';
@@ -227,8 +227,11 @@ async function startApp(token) {
   if (code && !token) {
     token = await getAccessToken(code);
     localStorage.setItem('access_token', token);
-    window.history.replaceState({}, document.title, window.location.pathname);
+    window.location.replace('/player');
+    return; 
   }
+
+
 
   if (token) {
     try {

@@ -63,9 +63,10 @@ app.get('/player', (req, res) => {
 
 app.get('*', (req, res, next) => {
   if (req.originalUrl.includes('.') || req.originalUrl.startsWith('/auth/')) {
-    return next(); // Deja pasar archivos .js, .css, etc.
+    return next(); 
   }
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(8000, () => console.log('Auth server running on http://localhost:8000'));
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => console.log(`Auth server running on http://localhost:${PORT}`));
