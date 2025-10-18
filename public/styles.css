@@ -1,277 +1,295 @@
-/* styles.css */
-
-/* Basic reset and body styling */
+/* ======== BASE ======== */
 html, body {
-  height: 100%;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #121212; /* Dark Spotify-like background */
+  padding: 0;
+  height: 100%;
+  background-color: #000;
   color: #fff;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
-.container {
+/* ======== CONTENEDOR GENERAL PARA LA PÁGINA DE INICIO (login) ======== */
+.index-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;   /* vertical center */
-  align-items: center;       /* horizontal center */
-  height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
-  text-align: center;
-  width: 100%;
-  max-width: 400px;          /* Optional max width */
-  margin: 0 auto;
-}
-
-/* Visibility helper class */
-.hidden {
-  display: none !important;
-}
-
-/* Title full width */
-.container > h1 {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-/* Now playing section: album art + artist side by side */
-#nowPlaying {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 10px;
-  justify-content: flex-start;
-  gap: 12px;
-}
-
-#albumArt {
-  flex-shrink: 0;
-  border-radius: 8px;
-}
-
-#nowPlaying > div {
-  margin-top:15px;
-  text-align: center;
-  flex-grow: 1;
-  word-wrap: break-word;
-}
-
-#progressBarContainer {
-  width: 100%;
-  height: 40px;             /* enough height to vertically center */
-  display: flex;
-  align-items: center;      /* vertical centering */
-  margin: 5px 0 10px 0;
-}
-
-#progressBar {
-  width: 100%;
-  height: 8px;
-  border-radius: 4px;
-  background: #282828;
-  cursor: pointer;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-/* Slider thumbs: keep your existing styles here */
-
-
-/* Controls + volume on one line */
-#controls {
-  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-  width: 100%;
-}
-
-label[for="volumeControl"] {
-  margin-left: 10px;
-  font-size: 18px;
-  vertical-align: middle;
-}
-
-#volumeControl {
-  width: 100px;
-  cursor: pointer;
-  margin-left: 6px;
-}
-
-/* Playlist selector + button inline container */
-#playlistContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-#playlistSelect {
-  width: 180px;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 6px;
-  border: none;
-  font-size: 16px;
-  background-color: #222;
-  color: #fff;
-}
-
-/* Buttons styling */
-button {
-  background-color: #1db954;
-  border: none;
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #1ed760;
-}
-
-/* Playlist button specific styling */
-#playBtn {
-  padding: 8px 16px;
-}
-
-/* Logout button full width and distinct color */
-#logoutBtn {
-  width: 100%;
-  padding: 12px 0;
-  background-color: #b33a3a;
-  border: none;
-  border-radius: 20px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#logoutBtn:hover {
-  background-color: #d44545;
-}
-/* Make SVG icons inherit button color and size */
-button svg, label svg {
-  vertical-align: middle;
-  pointer-events: none;
-  fill: currentColor;
-  width: 24px;
-  height: 24px;
-}
-
-/* Style for the progress bar */
-input[type="range"]#progressBar {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 8px;
-  background: #282828;
-  border-radius: 4px;
-  cursor: pointer;
-  position: relative;
-}
-
-input[type="range"]#progressBar::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  background: #1db954;
-  border-radius: 50%;
-  cursor: pointer;
-  
-}
-
-input[type="range"]#progressBar::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  background: #1db954;
-  border-radius: 50%;
-  cursor: pointer;
+  gap: 1.5rem;
+  width: 50%; /* Ajusta el ancho se necesite */
+  max-width: 1 rem; /* Limita el tamaño máximo */
+  height: auto;
+  min-height: 300px; /* Altura mínima */
+  padding: 7.5rem;
+  text-align: center;
+  margin: 0 auto; /* Centrado horizontal */
 }
 
 
-input[type="range"]#progressBar::-moz-range-thumb:hover {
-  background-color: #1ed760;
+#indexLogo {
+  max-width: 20vw; /* Logo ajustado para el inicio */
+  width: 25%;
+  height: auto;
 }
 
-/* Style for the volume slider */
-input[type="range"]#volumeControl {
-  -webkit-appearance: none;
-  width: 100px;
-  height: 6px;
-  border-radius: 3px;
-  background: #282828;
-  cursor: pointer;
-  margin-left: 6px;
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
 }
 
-input[type="range"]#volumeControl::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #1db954;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-input[type="range"]#volumeControl::-webkit-slider-thumb:hover {
-  background-color: #1ed760;
-}
-
-input[type="range"]#volumeControl::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #1db954;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-input[type="range"]#volumeControl::-moz-range-thumb:hover {
-  background-color: #1ed760;
-}
-#playPauseBtn svg {
-  pointer-events: none;
-}
-
-.resume-btn {
-  margin-bottom: 15px;
-  background-color: #1db954;
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.resume-btn:hover {
-  background-color: #1ed760;
-}
-
-.device-list {
-  margin-top: 10px;
-  padding-left: 0;
-  list-style: none;
-  text-align: left;
-  font-size: 14px;
+p {
+  font-size: 1.1rem;
   color: #aaa;
 }
 
-#progressBar {
-  background: linear-gradient(to right, #1db954 0%, #1db954 0%, #282828 0%, #282828 100%);
-  transition: background 0.3s ease, value 0.3s ease;
+#loginBtn {
+  background-color: #1db954;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
 
+#loginBtn:hover {
+  background-color: #1a8d4e;
+  transform: scale(1.05);
+}
+
+
+/* ======== ESTILOS PARA LA PÁGINA DE REPRODUCCIÓN ======== */
+
+/* Contenedor general para la página del reproductor */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* ======== BOTÓN LOGOUT ARRIBA ======== */
+#logoutBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #121212;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#logoutBtn:hover {
+  background-color: #1a1a1a;
+}
+
+/* ======== ZONA PRINCIPAL DEL PLAYER ======== */
+#nowPlaying {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+#trackTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#albumArt {
+  width: 25vw;
+  height: 25vw;
+  max-width: 280px;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  background-color: #181818;
+}
+
+#trackArtist {
+  font-size: 1.1rem;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+}
+
+#trackAlbum {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+
+/* ======== CONTROLES INFERIORES ======== */
+#controls {
+  background-color: #000;
+  border-top: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0 10px 0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+/* ===== CONTROLES ROW ===== */
+.controls-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  padding: 0rem 0;
+  width: 100%;
+}
+
+/* Imagen pequeña al lado izquierdo de los controles */
+.mini-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 2.5rem;
+}
+
+.mini-art img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Botones de control en el centro */
+.buttons-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+/* Control de volumen a la derecha */
+.volume-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: absolute;
+  right: 4rem;
+  margin-bottom: 2rem;
 }
 
 #volumeControl {
-  background: linear-gradient(to right, #1db954 0%, #1db954 50%, #282828 50%, #282828 100%);
+  width: 100px;
+  height: 4px;
+}
+
+/* ===== PROGRESS BAR ===== */
+#progressBarContainer {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto 0.5rem auto;
+}
+
+#progressBar {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: #333;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+#progressBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#progressBar::-webkit-slider-thumb:hover {
+  background-color: #1db954;
+}
+
+/* ===== BOTONES DE REPRODUCCIÓN ===== */
+#controls button {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+}
+
+#controls button:hover {
+  color: #fff;
+  transform: scale(1.05);
+}
+
+#controls button svg {
+  width: 26px;
+  height: 26px;
+}
+
+#playPauseBtn {
+  color: #000;
+  background-color: #fff;
+  border-radius: 9999px;
+  padding: 0.8rem;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+#playPauseBtn:hover {
+  background-color: #1db954;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* ===== VOLUMEN ===== */
+label[for="volumeControl"] {
+  color: #888;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+#volumeControl {
+  width: 100px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #333;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+#volumeControl::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#volumeControl::-webkit-slider-thumb:hover {
+  background-color: #1db954;
 }
