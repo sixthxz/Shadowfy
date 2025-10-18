@@ -6,23 +6,27 @@ html, body {
   background-color: #000;
   color: #fff;
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  box-sizing: border-box; /* Añadir box-sizing para incluir padding en el tamaño total */
 }
 
-/* ======== CONTENEDOR GENERAL PARA LA PÁGINA DE INICIO (login) ======== */
 .index-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  width: 50%; /* Ajusta el ancho se necesite */
-  max-width: 1 rem; /* Limita el tamaño máximo */
-  height: auto;
+  width: 50%; /* Ancho ajustable */
+  max-width: 100%;
+  height: 100vh; /* Usar altura relativa para adaptarse a la ventana */
   min-height: 300px; /* Altura mínima */
-  padding: 7.5rem;
+  padding: 10vh; /* Ajustar el padding con vh para que sea relativo al alto de la ventana */
   text-align: center;
   margin: 0 auto; /* Centrado horizontal */
+  overflow: hidden; /* Evitar el scroll */
+  box-sizing: border-box; /* Asegura que el padding se cuente dentro del tamaño total */
 }
+
+
 
 
 #indexLogo {

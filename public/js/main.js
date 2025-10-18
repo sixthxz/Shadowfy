@@ -28,7 +28,7 @@ const volumeControl = document.getElementById("volumeControl")
 const isPlayerPage = logoutBtn && playPauseBtn && albumArt && trackTitle
 
 if (!isPlayerPage) {
-  console.warn("No estamos en la página del player, deteniendo ejecución")
+  
 }
 
 if (logoutBtn) {
@@ -97,7 +97,6 @@ async function updatePlaybackUI() {
 
 async function startApp() {
   if (!trackTitle || !albumArt || !trackArtist) {
-    console.error("Elementos del DOM no encontrados. Asegúrate de estar en player.html")
     return
   }
 
@@ -105,7 +104,6 @@ async function startApp() {
 
   const token = await getValidAccessToken()
   if (!token) {
-    console.error("No hay token válido en startApp")
     return
   }
 
@@ -191,7 +189,7 @@ async function startApp() {
               await resumePlayback(token, useDeviceId, playback.progress_ms, playback.context?.uri, playback.item.uri)
             }
           } else {
-            console.warn("No hay reproducción activa ni pista disponible.")
+            
           }
         } else {
           player.togglePlay()
@@ -276,7 +274,6 @@ async function startApp() {
       if (playback.device?.name === "Shadowfy" || playback.device?.id === deviceId) return
       renderTrackInfo(playback)
     } catch (err) {
-      console.warn("Error al sincronizar estado remoto:", err)
     }
   }, 30000)
 }
@@ -297,7 +294,6 @@ async function startApp() {
         throw new Error("El token no se guardó correctamente")
       }
     } catch (error) {
-      console.error("Error de autenticación:", error)
       alert("La autenticación falló. Por favor, inicia sesión nuevamente.")
       sessionStorage.clear()
       setTimeout(() => {
@@ -309,7 +305,6 @@ async function startApp() {
     try {
       await startApp()
     } catch (error) {
-      console.error("Error al iniciar la aplicación:", error)
       alert("Hubo un error al cargar la aplicación. Recarga la página.")
     }
     return
@@ -332,7 +327,6 @@ async function startApp() {
 
     await startApp()
   } catch (err) {
-    console.error("Error validando token:", err)
     const refreshToken = sessionStorage.getItem("refresh_token")
     if (refreshToken) {
       sessionStorage.removeItem("access_token")

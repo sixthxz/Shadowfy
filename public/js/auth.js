@@ -1,5 +1,3 @@
-// auth.js
-
 let CLIENT_ID, REDIRECT_URI
 let authInProgress = false
 let refreshPromise = null
@@ -44,7 +42,6 @@ export async function redirectToAuthCodeFlow() {
   await loadEnv()
 
   if (authInProgress) {
-    console.warn("Autenticación ya en progreso, ignorando nueva solicitud")
     return
   }
   authInProgress = true
@@ -73,7 +70,6 @@ export async function getAccessToken(code) {
   await loadEnv()
   const codeVerifier = sessionStorage.getItem("verifier")
 
-  console.log("[v0] Enviando código al servidor...")
   const res = await fetch("/auth/token", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -86,24 +82,19 @@ export async function getAccessToken(code) {
 
   if (!res.ok) {
     const errorText = await res.text()
-    console.error("[v0] Error del servidor:", errorText)
     throw new Error(`Falló la solicitud al backend: ${res.status}`)
   }
 
   const data = await res.json()
-  console.log("[v0] Respuesta del servidor recibida")
 
   if (!data.access_token) {
-    console.error("[v0] La respuesta del servidor no contenía un access_token:", data)
     throw new Error("El token de acceso no se encontró en la respuesta.")
   }
 
-  console.log("[v0] Guardando token en sessionStorage...")
   sessionStorage.setItem("access_token", data.access_token)
   if (data.refresh_token) sessionStorage.setItem("refresh_token", data.refresh_token)
   sessionStorage.setItem("expires_at", Date.now() + data.expires_in * 1000)
 
-  console.log("[v0] Token guardado correctamente")
   return data.access_token
 }
 
@@ -119,19 +110,16 @@ export async function getValidAccessToken() {
   }
 
   if (!refreshToken) {
-    console.warn("No refresh token, el usuario debe re-autenticarse")
     await redirectToAuthCodeFlow()
     return null
   }
 
   if (refreshPromise) {
-    console.log("Refresh ya en progreso, esperando...")
     return await refreshPromise
   }
 
   refreshPromise = (async () => {
     try {
-      console.log("Iniciando refresh del token...")
       const res = await fetch("/auth/refresh", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -152,13 +140,11 @@ export async function getValidAccessToken() {
           sessionStorage.setItem("refresh_token", data.refresh_token)
         }
 
-        console.log("Token refrescado exitosamente")
         return data.access_token
       } else {
         throw new Error("Respuesta inválida al refrescar el token")
       }
     } catch (err) {
-      console.error("Falló el refresco del token:", err)
       sessionStorage.clear()
       await redirectToAuthCodeFlow()
       return null

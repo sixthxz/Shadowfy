@@ -32,7 +32,6 @@ export async function playPlaylist(device_id, token, playlistUri) {
 
   if (!res.ok) {
     const errorText = await res.text()
-    console.error("playPlaylist error:", res.status, errorText)
   }
 }
 
@@ -43,14 +42,12 @@ export async function getCurrentPlayback(token) {
 
   if (res.status === 204) return null
   if (!res.ok) {
-    console.warn("Playback fetch failed:", res.status)
     return null
   }
 
   try {
     return await res.json()
   } catch (e) {
-    console.error("Invalid JSON in getCurrentPlayback:", e)
     return null
   }
 }
@@ -104,7 +101,6 @@ export async function resumePlayback(token, device_id, position_ms = 0, context_
 
   if (!res.ok) {
     const err = await res.text()
-    console.error("resumePlayback failed:", res.status, err)
   }
 }
 
@@ -121,6 +117,5 @@ export async function pausePlayback(token, device_id = null) {
 
   if (!res.ok) {
     const err = await res.text()
-    console.error("pausePlayback failed:", res.status, err)
   }
 }
