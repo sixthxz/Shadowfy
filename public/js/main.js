@@ -24,6 +24,7 @@ const progressBar = document.getElementById("progressBar")
 const nowPlaying = document.getElementById("nowPlaying")
 const controls = document.getElementById("controls")
 const volumeControl = document.getElementById("volumeControl")
+const miniArt = document.getElementById("miniArt")
 
 const isPlayerPage = logoutBtn && playPauseBtn && albumArt && trackTitle
 
@@ -67,7 +68,6 @@ function renderTrackInfo(playback) {
     const imageUrl = playback.item.album.images?.[0]?.url
 
     img.src = imageUrl
-
     trackTitle.textContent = playback.item.name
     trackArtist.textContent = playback.item.artists.map((a) => a.name).join(", ")
     if (trackAlbum) {
@@ -139,7 +139,7 @@ async function startApp() {
   }
 
   const elementsToShow = [playlistSelect, playBtn, logoutBtn, controls, nowPlaying].filter((el) => el)
-  elementsToShow.forEach((el) => (el.style.display = "inline-block"))
+  elementsToShow.forEach((el) => (el.style.removeProperty("display")))
 
   initializePlayer(token, async (id, p) => {
     player = p
@@ -220,6 +220,7 @@ async function startApp() {
         img.onload = () => {
           albumArt.src = imageUrl
           albumArt.classList.remove("loading")
+          miniArt.src = imageUrl
         }
         img.onerror = () => {
           albumArt.src = "/placeholder.svg"

@@ -3,62 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <title>Shadowfy</title>
-  <link rel="icon" href="/trademark.ico" type="image/x-icon" />
+  <link rel="icon" href="trademark.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <div class="container">
     <button id="logoutBtn">Cerrar sesión</button>
-    <div id="nowPlaying">
+
+    <main id="nowPlaying">
       <h1 id="trackTitle">No song playing</h1>
 
-      <img id="albumArt" src="/placeholder.svg" alt="Album Art" />
+      <img id="albumArt" src="placeholder.svg" alt="Album Art" />
 
       <p id="trackArtist">Unknown Artist</p>
       <p id="trackAlbum">Unknown Album</p>
-    </div>
+    </main>
 
-    <div id="controls">
+    <footer id="controls">
       <div id="progressBarContainer">
         <input type="range" id="progressBar" min="0" max="1000" value="0" />
       </div>
 
       <div class="controls-row">
+        <div class="mini-art">
+          <img id="miniArt"src="placeholder.svg" alt="Mini Art" />
+        </div>
+
         <div class="buttons-row">
-          <button id="prevBtn" aria-label="Previous track" title="Previous">
-            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <button id="prevBtn" title="Anterior">
+            <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
               <path d="M18 6v12L7.5 12zM6 6h2v12H6z"/>
             </svg>
           </button>
 
-          <button id="playPauseBtn" aria-label="Play/Pause" title="Play/Pause">
-            <svg id="playIcon" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <button id="playPauseBtn" title="Reproducir/Pausar">
+            <svg id="playIcon" width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z"/>
             </svg>
-            <svg id="pauseIcon" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="display:none;">
+            <svg id="pauseIcon" width="26" height="26" fill="currentColor" viewBox="0 0 24 24" style="display:none;">
               <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
             </svg>
           </button>
 
-          <button id="nextBtn" aria-label="Next track" title="Next">
-            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <button id="nextBtn" title="Siguiente">
+            <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
               <path d="M6 6v12l10.5-6zM18 6h2v12h-2z"/>
             </svg>
           </button>
         </div>
+
         <div class="volume-row">
-          <label for="volumeControl" aria-label="Volume control" title="Volume">
-            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M3 9v6h4l5 5V4L7 9H3z"/>
-            </svg>
-          </label>
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 9v6h4l5 5V4L7 9H3z"/>
+          </svg>
           <input type="range" id="volumeControl" min="0" max="100" value="50" />
         </div>
       </div>
-    </div>
-
+    </footer>
   </div>
 
-  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
