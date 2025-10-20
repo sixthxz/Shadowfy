@@ -2,61 +2,115 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shadowfy</title>
   <link rel="icon" href="trademark.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/responsive.css" />
+
 </head>
-<body>
-  <div class="container">
-    <button id="logoutBtn">Cerrar sesión</button>
+<body class="m-0 p-0 h-full bg-black text-white font-sans">
+  <div class="flex flex-col justify-between min-h-screen w-full relative overflow-hidden">
+    <!-- Logout Button -->
+    <button 
+      id="logoutBtn" 
+      class="absolute top-4 right-4 bg-[#121212] text-white border border-[#333] rounded-full px-4 py-2 text-sm cursor-pointer transition-colors hover:bg-[#1a1a1a] md:px-4 md:py-2 md:text-sm touch-manipulation z-10"
+    >
+      Cerrar sesión
+    </button>
 
-    <main id="nowPlaying">
-      <h1 id="trackTitle">No song playing</h1>
+    <!-- Main Content -->
+    <main id="nowPlaying" class="flex flex-col justify-center items-center flex-1 text-center mx-0 px-4 py-8">
+      <h1 id="trackTitle" class="text-4xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-4 leading-tight">No song playing</h1>
 
-      <img id="albumArt" src="placeholder.svg" alt="Album Art" />
+      <img 
+        id="albumArt" 
+        src="placeholder.svg" 
+        alt="Album Art" 
+        class="w-64 h-64 sm:w-52 sm:h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 object-cover rounded-xl mb-8 sm:mb-5 shadow-[0_0_30px_rgba(0,0,0,0.6)] bg-[#181818]"
+      />
 
-      <p id="trackArtist">Unknown Artist</p>
-      <p id="trackAlbum">Unknown Album</p>
+      <p id="trackArtist" class="text-2xl sm:text-lg text-[#aaa] mb-3 sm:mb-1">Unknown Artist</p>
+      <p id="trackAlbum" class="text-lg sm:text-sm text-[#666]">Unknown Album</p>
     </main>
 
-    <footer id="controls">
-      <div id="progressBarContainer">
-        <input type="range" id="progressBar" min="0" max="1000" value="0" />
+    <!-- Footer Controls -->
+    <footer id="controls" class="bg-black border-t border-[#1a1a1a] flex flex-col items-center justify-center py-3 pb-10 md:py-3 md:pb-8 w-full relative">
+      <!-- Progress Bar -->
+      <div id="progressBarContainer" class="w-full px-4 sm:w-4/5 sm:max-w-[600px] mb-2">
+        <input 
+          type="range" 
+          id="progressBar" 
+          min="0" 
+          max="1000" 
+          value="0" 
+          class="w-full h-1 rounded-sm cursor-pointer"
+        />
       </div>
 
-      <div class="controls-row">
-        <div class="mini-art">
-          <img id="miniArt"src="placeholder.svg" alt="Mini Art" />
+      <!-- Controls Row -->
+      <div class="flex justify-center items-center relative w-full max-w-[1400px] px-4 sm:px-8 md:px-16">
+        <!-- Mini Album Art (hidden on mobile, visible on larger screens) -->
+        <div class="hidden sm:flex items-center absolute top-1/2 left-4 sm:left-8 md:left-16 -translate-y-1/2">
+          <img 
+            id="miniArt" 
+            src="placeholder.svg" 
+            alt="Mini Art" 
+            class="w-12 h-12 rounded-md object-cover"
+          />
         </div>
 
-        <div class="buttons-row">
-          <button id="prevBtn" title="Anterior">
-            <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+        <!-- Playback Buttons -->
+        <div class="flex gap-6 sm:gap-8 md:gap-10 justify-center items-center z-10">
+          <!-- Previous Button -->
+          <button 
+            id="prevBtn" 
+            title="Anterior" 
+            class="bg-transparent border-none text-[#ccc] cursor-pointer transition-all hover:text-white hover:scale-105 p-2 sm:p-1 touch-manipulation"
+          >
+            <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" class="sm:w-[26px] sm:h-[26px]">
               <path d="M18 6v12L7.5 12zM6 6h2v12H6z"/>
             </svg>
           </button>
 
-          <button id="playPauseBtn" title="Reproducir/Pausar">
-            <svg id="playIcon" width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+          <!-- Play/Pause Button -->
+          <button 
+            id="playPauseBtn" 
+            title="Reproducir/Pausar" 
+            class="text-black bg-white rounded-full p-4 sm:p-3 transition-all hover:bg-[#1db954] hover:text-white hover:scale-110 touch-manipulation"
+          >
+            <svg id="playIcon" width="32" height="32" fill="currentColor" viewBox="0 0 24 24" class="sm:w-[26px] sm:h-[26px]">
               <path d="M8 5v14l11-7z"/>
             </svg>
-            <svg id="pauseIcon" width="26" height="26" fill="currentColor" viewBox="0 0 24 24" style="display:none;">
+            <svg id="pauseIcon" width="32" height="32" fill="currentColor" viewBox="0 0 24 24" style="display:none;" class="sm:w-[26px] sm:h-[26px]">
               <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
             </svg>
           </button>
 
-          <button id="nextBtn" title="Siguiente">
-            <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+          <!-- Next Button -->
+          <button 
+            id="nextBtn" 
+            title="Siguiente" 
+            class="bg-transparent border-none text-[#ccc] cursor-pointer transition-all hover:text-white hover:scale-105 p-2 sm:p-1 touch-manipulation"
+          >
+            <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" class="sm:w-[26px] sm:h-[26px]">
               <path d="M6 6v12l10.5-6zM18 6h2v12h-2z"/>
             </svg>
           </button>
         </div>
 
-        <div class="volume-row">
+        <!-- Volume Control (hidden on very small screens) -->
+        <div class="hidden sm:flex items-center gap-2 absolute top-1/2 right-4 sm:right-8 md:right-16 -translate-y-1/2 select-none z-10">
           <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
             <path d="M3 9v6h4l5 5V4L7 9H3z"/>
           </svg>
-          <input type="range" id="volumeControl" min="0" max="100" value="50" />
+          <input 
+            type="range" 
+            id="volumeControl" 
+            min="0" 
+            max="100" 
+            value="50" 
+            class="w-20 md:w-28 lg:w-32 h-1 rounded-sm cursor-pointer"
+          />
         </div>
       </div>
     </footer>

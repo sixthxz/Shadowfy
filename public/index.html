@@ -3,22 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shadowfy</title>
+  <title>Shadowfy - Login</title>
   <link rel="icon" href="/trademark.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/responsive.css" />
+  
 </head>
-<body>
-  <div class="index-container">
-    <img src="/logo.svg" alt="Shadowfy logo" id="indexLogo" />
+<body class="bg-black text-white min-h-screen flex items-center justify-center p-6">
+  <div class="flex flex-col items-center justify-center text-center max-w-2xl w-full space-y-6 md:space-y-6">
+    <!-- Logo -->
+    <!-- Reduced desktop logo size from md:w-40 to md:w-32 -->
+    <img 
+      src="/logo.svg" 
+      alt="Shadowfy logo" 
+      class="w-32 h-32 md:w-32 md:h-32 mb-4 md:mb-4"
+    />
 
-    <h1>
-      <span>Shadowfy</span><br>
-      The Minimal Spotify Player.
+    <!-- Title -->
+    <!-- Reduced desktop title sizes: md:text-4xl lg:text-5xl instead of md:text-5xl lg:text-6xl -->
+    <h1 class="text-4xl md:text-4xl lg:text-5xl font-bold leading-tight">
+      <span class="block">Shadowfy</span>
+      <span class="block mt-2">The Minimal Spotify <br />Player.</span>
     </h1>
 
-    <p>Inicia sesión con tu cuenta de Spotify para comenzar.</p>
+    <!-- Description -->
+    <!-- Reduced desktop text size from md:text-xl to md:text-lg -->
+    <p class="text-lg md:text-lg text-gray-400 max-w-xl">
+      Inicia sesión con tu cuenta de Spotify para comenzar.
+    </p>
 
-    <button id="loginBtn">Iniciar sesión con Spotify</button>
+    <!-- Login Button -->
+    <!-- Reduced desktop button padding from md:px-16 md:py-5 to md:px-12 md:py-4 and text from md:text-xl to md:text-lg -->
+    <button 
+      id="loginBtn"
+      class="bg-[#1db954] hover:bg-[#1ed760] text-white font-semibold text-lg md:text-lg px-12 py-4 md:px-12 md:py-4 rounded-full transition-colors duration-200 mt-4 md:mt-4 touch-manipulation active:scale-95"
+    >
+      Iniciar sesión con Spotify
+    </button>
   </div>
 
   <script type="module">
@@ -27,6 +47,7 @@
     loginBtn.onclick = () => {
       loginBtn.disabled = true;
       loginBtn.textContent = 'Redirigiendo...';
+      loginBtn.classList.add('opacity-75', 'cursor-not-allowed');
       redirectToAuthCodeFlow();
     };
   </script>
